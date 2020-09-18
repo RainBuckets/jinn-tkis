@@ -26,15 +26,13 @@ async def updatespoilers(ctx):
     even = bot.get_channel(int(EVENCH))
     if odd.name < even.name:
         # change name to "spoilers_episode_odd+2"
-        string = odd.name.split("_")
-        epnum = int(string[2]) + 2
+        epnum = int(odd.name[-1]) + 2
         newname = odd.name[:-1] + str(epnum)
         await odd.edit(name=newname)
         await ctx.send("spoilers_episode_odd updated")
     else:
         # change name to "spoilers_episode_even+2"
-        string = even.name.split("_")
-        epnum = int(string[2]) + 2
+        epnum = int(even.name[-1]) + 2
         newname = even.name[:-1] + str(epnum)
         await even.edit(name=newname)
         await ctx.send("spoilers_episode_even updated")
